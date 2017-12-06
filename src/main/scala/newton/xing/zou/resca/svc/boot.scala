@@ -3,9 +3,10 @@ import com.typesafe.config.{ Config, ConfigFactory }
 import akka.stream.ActorMaterializer
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.server.Directives._
 
 object boot extends App {
-  val mainSys: Config = ConfigFactory.load().getConfig("mainSys")
+  val mainSys: Config = ConfigFactory.load("application.conf").getConfig("mainSys")
   implicit lazy val system = ActorSystem("resca-akka-http", mainSys)
   /**
     * Ensure that the constructed ActorSystem is shut down when the JVM shuts down
@@ -16,10 +17,15 @@ object boot extends App {
   })
 
   implicit val materializer = ActorMaterializer()
-  val rescaConf: Config = ConfigFactory.load().getConfig("resca")
-  val hostName = rescaConf.getString("resca.api.interface")
-  val webPort = rescaConf.getInt("resca.api.port")
-  val route = new Directives()
+  val rescaConf: Config = ConfigFactory.load("resca.conf").getConfig("resca")
+  val hostName = rescaConf.getString("api.interface")
+  val webPort = rescaConf.getInt("api.port")
+  val route = get {
+    path("send") {
+        getFromFile("webapp/public/index.html")
+    }
+  }
+
   val bindingFuture = Http().bindAndHandle(route, hostName, webPort)
-  println(s"Server online at https://$hostName:$webPort/\n")
+  println(s"Server online at http://$hostName:$webPort/\n")
 }
