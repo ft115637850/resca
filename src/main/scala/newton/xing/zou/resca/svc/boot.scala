@@ -4,6 +4,7 @@ import akka.stream.ActorMaterializer
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.model._
 
 object boot extends App {
   val mainSys: Config = ConfigFactory.load("application.conf").getConfig("mainSys")
@@ -21,10 +22,16 @@ object boot extends App {
   val hostName = rescaConf.getString("api.interface")
   val webPort = rescaConf.getInt("api.port")
   val route = get {
-    path("send") {
-        getFromFile("webapp/public/index.html")
+      pathSingleSlash {
+        redirect("chat/", StatusCodes.PermanentRedirect)
+      } ~ path("chat") {
+        redirect("chat/", StatusCodes.PermanentRedirect)
+      } ~ path("chat" / "") {
+        getFromFile("webapp/build/index.html")
+      } ~ pathPrefix("chat") {
+        getFromResourceDirectory("webapp/build")
+      }
     }
-  }
 
   val bindingFuture = Http().bindAndHandle(route, hostName, webPort)
   println(s"Server online at http://$hostName:$webPort/\n")
