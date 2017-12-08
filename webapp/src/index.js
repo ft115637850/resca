@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BandWidthMeter from './components/BandWidthMeter';
+import Login from './components/Login';
 import AppWrapper from './AppWrapper';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
 	<div>
 		<AppWrapper>
-			<BandWidthMeter/>
+			<Login/>
 		</AppWrapper>
 	</div>,
 	document.getElementById('root'));

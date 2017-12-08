@@ -2,8 +2,6 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 import Strings from '../../strings';
-import { SpeedTestTitle } from './SpeedTestTitle';
-import SpeedTestControl from './SpeedTestControl';
 
 const style = {
 	width: 440,
@@ -18,7 +16,8 @@ class Login extends React.Component {
 	render() {
 		return (
 			<Paper style={style} zDepth={1}>
-				<label></label>
+				<label>{this.props.pingResult}</label>
+				<FlatButton label={Strings.login.ping} primary={true} onClick={() => this.props.pingServer()} />
 			</Paper>
 		);
 	}

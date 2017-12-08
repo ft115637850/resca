@@ -1,5 +1,5 @@
-import speedTest from './speedTest';
+import login from './login';
 
 export default {
-	speedTest
+	login
 };

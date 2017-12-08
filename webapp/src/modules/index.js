@@ -1,7 +1,7 @@
-import SpeedTestModule from './SpeedTestModule';
+import LoginModule from './LoginModule';
 
 const modules = [
-	SpeedTestModule
+	LoginModule
 ];
 
 export default modules;

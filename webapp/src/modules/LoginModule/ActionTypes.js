@@ -1,0 +1,4 @@
+export default {
+	PING_SUCCESS: 'PING_SUCCESS',
+	PING_FAILURE: 'PING_FAILURE'
+};

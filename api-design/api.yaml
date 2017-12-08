@@ -1,0 +1,29 @@
+swagger: '2.0'
+info:
+  title: resca
+  version: 1.0.0
+host: 127.0.0.1:7443
+schemes:
+  - http
+basePath: /api/v0
+produces:
+  - application/json
+paths:
+  /ping:
+    get:
+      summary: ping api server
+      operationId: pingPong
+      tags:
+        - pingPong
+      responses:
+        200:
+          description: returns pong
+          schema:
+              $ref: '#/definitions/PingPong'
+definitions:
+  PingPong:
+    type: object
+    properties:
+      result:
+        type: string
+

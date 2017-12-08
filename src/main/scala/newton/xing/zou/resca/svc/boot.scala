@@ -3,8 +3,13 @@ import com.typesafe.config.{Config, ConfigFactory}
 import akka.stream.ActorMaterializer
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.model.HttpMethods._
+import akka.http.scaladsl.model.headers.{HttpOrigin, HttpOriginRange}
 import akka.http.scaladsl.server.Directives._
-import newton.xing.zou.resca.svc.routes.{AssetSvc, LoginSvc}
+import ch.megard.akka.http.cors.CorsDirectives._
+import ch.megard.akka.http.cors.CorsSettings
+import newton.xing.zou.resca.svc.svcv0.{AssetSvc, LoginSvc}
+import scala.collection.immutable
 
 object boot extends App {
   val mainSys: Config = ConfigFactory.load("application.conf").getConfig("mainSys")
@@ -21,7 +26,14 @@ object boot extends App {
   val rescaConf: Config = ConfigFactory.load("resca.conf").getConfig("resca")
   val hostName = rescaConf.getString("api.interface")
   val webPort = rescaConf.getInt("api.port")
-  val route = new AssetSvc().route ~ new LoginSvc().route
+  val settings = CorsSettings.defaultSettings.copy(
+    allowedOrigins = HttpOriginRange(
+      HttpOrigin("http://127.0.0.1:7443"),
+      HttpOrigin("http://localhost:3000")
+    ),
+    allowedMethods = immutable.Seq(GET, POST, HEAD, OPTIONS, PUT)
+  )
+  val route = cors(settings)(new AssetSvc().route ~ new LoginSvc().route)
 
   val bindingFuture = Http().bindAndHandle(route, hostName, webPort)
   println(s"Server online at http://$hostName:$webPort/\n")
