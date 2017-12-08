@@ -23,3 +23,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /webapp/yarn.lock
+/webapp/src/api-client/.babelrc
+/webapp/src/api-client/.swagger-codegen/VERSION
+/webapp/src/api-client/.travis.yml
+/webapp/src/api-client/README.md
+/webapp/src/api-client/docs/PingPong.md
+/webapp/src/api-client/docs/PingPongApi.md
+/webapp/src/api-client/git_push.sh
+/webapp/src/api-client/mocha.opts
+/webapp/src/api-client/package.json
+/webapp/src/api-client/.swagger-codegen-ignore
+/api-design/swagger-codegen-cli-2.3.0.jar
