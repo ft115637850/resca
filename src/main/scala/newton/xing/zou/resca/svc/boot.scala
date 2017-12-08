@@ -3,6 +3,9 @@ import com.typesafe.config.{Config, ConfigFactory}
 import akka.stream.ActorMaterializer
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.server.{RejectionHandler, ExceptionHandler}
+import akka.http.scaladsl.server._
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.model.HttpMethods._
 import akka.http.scaladsl.model.headers.{HttpOrigin, HttpOriginRange}
 import akka.http.scaladsl.server.Directives._
@@ -33,7 +36,21 @@ object boot extends App {
     ),
     allowedMethods = immutable.Seq(GET, POST, HEAD, OPTIONS, PUT)
   )
-  val route = cors(settings)(new AssetSvc().route ~ new LoginSvc().route)
+  val rejectionHandler = corsRejectionHandler withFallback RejectionHandler.default
+
+  val exceptionHandler = ExceptionHandler {
+    case e: NoSuchElementException => complete(StatusCodes.NotFound -> e.getMessage)
+  }
+
+  val handleErrors = handleRejections(rejectionHandler) & handleExceptions(exceptionHandler)
+
+  val route = handleRejections(corsRejectionHandler) {
+    cors(settings)(
+      handleErrors {
+        new AssetSvc().route ~ new LoginSvc().route
+      }
+    )
+  }
 
   val bindingFuture = Http().bindAndHandle(route, hostName, webPort)
   println(s"Server online at http://$hostName:$webPort/\n")
