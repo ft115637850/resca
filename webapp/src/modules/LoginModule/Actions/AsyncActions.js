@@ -1,10 +1,11 @@
-import { PingPongApi } from '../../../api-client/src';
+import { ApiClient, PingPongApi } from '../../../api-client/src';
 import actionCreators from './ActionCreators';
 const {
 	pingSuccess,
 	pingFailure
 } = actionCreators;
 
+ApiClient.instance.authentications['resca'].accessToken = "sssss.sssssdffff.ffgggg";
 const pingPongApi = new PingPongApi();
 
 function pingServer() {

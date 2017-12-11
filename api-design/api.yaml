@@ -8,6 +8,12 @@ schemes:
 basePath: /api/v0
 produces:
   - application/json
+security:
+  - resca: []
+securityDefinitions:
+  resca:
+    type: oauth2
+    flow: password
 paths:
   /ping:
     get:

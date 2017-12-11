@@ -52,7 +52,7 @@ export default class PingPongApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['resca'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = PingPong;
