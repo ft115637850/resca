@@ -2,6 +2,7 @@ import {
 	combineReducers,
 	createStore
 } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import modules from '../modules';
 import storeEnhancers from './storeEnhancers';
 
@@ -12,6 +13,7 @@ function createRootReducer(modules) {
 		reducerMap[module.NAME] = module.createReducer();
 	});
 
+	reducerMap.form = formReducer;
 	return combineReducers(reducerMap);
 }
 

@@ -3,17 +3,21 @@ import types from '../ActionTypes';
 // Reducer handlers
 import pingSuccess from './pingSuccess';
 import pingFailure from './pingFailure';
+import loginSuccess from './loginSuccess';
 
 const initialState = {
-	entities: {
-		pong: ""
+	userData: {
+		pong: '',
+		token: '',
+		isAuthenticated: false
 	}
 };
 
 function createReducerInModule() {
 	return createReducer(initialState, {
 		[types.PING_SUCCESS]: pingSuccess,
-		[types.PING_SUCCESS]: pingFailure
+		[types.PING_SUCCESS]: pingFailure,
+		[types.LOGIN_SUCCESS]: loginSuccess
 	});
 }
 

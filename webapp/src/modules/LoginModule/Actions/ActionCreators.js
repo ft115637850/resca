@@ -18,7 +18,17 @@ function pingFailure(pingResult) {
 	};
 }
 
+function loginSuccess(result) {
+	return {
+		type: types.LOGIN_SUCCESS,
+		payload: {
+			token: result.token
+		}
+	};
+}
+
 export default {
 	pingSuccess,
-	pingFailure
+	pingFailure,
+	loginSuccess
 };

@@ -1,24 +1,45 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
+import { Field } from 'redux-form';
 import FlatButton from 'material-ui/FlatButton';
 import Strings from '../../strings';
 
-const style = {
-	width: 440,
-	minHeight: 400,
-	margin: 'auto',
-	marginTop: 50,
-	padding: '15px 15px 70px 15px',
-	position: 'relative'
-};
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+	<div>
+		<label>{label}</label>
+		<div>
+			<input {...input} placeholder={label} type={type} />
+			{touched && error && <span>{error}</span>}
+		</div>
+	</div>
+);
 
 class Login extends React.Component {
 	render() {
+		const { loginRequest, error, handleSubmit, pristine, reset, submitting } = this.props;
 		return (
-			<Paper style={style} zDepth={1}>
-				<label>{this.props.pingResult}</label>
-				<FlatButton label={Strings.login.ping} primary={true} onClick={() => this.props.pingServer()} />
-			</Paper>
+			<form onSubmit={handleSubmit(loginRequest)}>
+				<Field
+					name="username"
+					type="text"
+					component={renderField}
+					label="Username"
+				/>
+				<Field
+					name="password"
+					type="password"
+					component={renderField}
+					label="Password"
+				/>
+				{error && <strong>{error}</strong>}
+				<div>
+					<button type="submit" disabled={submitting}>
+						{Strings.login.login}
+					</button>
+					<button type="button" disabled={pristine || submitting} onClick={reset}>
+						{Strings.login.clear}
+					</button>
+				</div>
+			</form>
 		);
 	}
 }

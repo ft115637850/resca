@@ -2,10 +2,11 @@ import { ApiClient, PingPongApi } from '../../../api-client/src';
 import actionCreators from './ActionCreators';
 const {
 	pingSuccess,
-	pingFailure
+	pingFailure,
+	loginSuccess
 } = actionCreators;
 
-ApiClient.instance.authentications['resca'].accessToken = "sssss.sssssdffff.ffgggg";
+// ApiClient.instance.authentications['resca'].accessToken = "sssss.sssssdffff.ffgggg";
 const pingPongApi = new PingPongApi();
 
 function pingServer() {
@@ -16,6 +17,14 @@ function pingServer() {
 	};
 }
 
+function loginRequest(values) {
+	return dispatch => {
+		console.log(values);
+		dispatch(loginSuccess({token: 'sssss.sssssdffff.ffgggg'}));
+	};
+}
+
 export default {
-	pingServer
+	pingServer,
+	loginRequest
 };
