@@ -1,7 +1,9 @@
 import React from 'react';
 import {
 	BrowserRouter as Router,
-	Route
+	Route,
+	Switch,
+	Redirect
 } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import components from '../components';
@@ -9,10 +11,11 @@ const {Login, MainPage} = components;
 
 const routes = () => (
 	<Router>
-		<div>
-			<Route path="/login" component={Login}/>
-			<PrivateRoute path="/mainPage" component={MainPage}/>
-		</div>
+		<Switch>
+			<Route path="/resca/login" component={Login}/>
+			<PrivateRoute path="/resca/mainPage" component={MainPage}/>
+			<Redirect to="/resca/mainPage"/>
+		</Switch>
 	</Router>
 );
 

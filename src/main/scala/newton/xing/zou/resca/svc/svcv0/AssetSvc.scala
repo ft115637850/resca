@@ -6,12 +6,12 @@ import akka.http.scaladsl.server.Directives
 class AssetSvc extends Directives {
   val route = get {
     pathSingleSlash {
-      redirect("index/", StatusCodes.PermanentRedirect)
-    } ~ path("index") {
-      redirect("index/", StatusCodes.PermanentRedirect)
-    } ~ path("index" / "") {
+      redirect("resca/", StatusCodes.PermanentRedirect)
+    } ~ path("resca") {
+      redirect("resca/", StatusCodes.PermanentRedirect)
+    } ~ path("resca" / "") {
       getFromFile("webapp/build/index.html")
-    } ~ pathPrefix("index") {
+    } ~ pathPrefix("resca") {
       getFromResourceDirectory("webapp/build")
     }
   }
