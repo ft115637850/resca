@@ -7,7 +7,8 @@ const { actions, selectors } = loginModule;
 
 const mapStateToProps = state => {
 	return {
-		pingResult: selectors.getPingResult(state)
+		pingResult: selectors.getPingResult(state),
+		isAuthenticated: selectors.isAuthenticated(state)
 	};
 };
 

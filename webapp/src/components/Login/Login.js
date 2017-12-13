@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import {Redirect} from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import Strings from '../../strings';
 
@@ -15,7 +16,14 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 
 class Login extends React.Component {
 	render() {
-		const { loginRequest, error, handleSubmit, pristine, reset, submitting } = this.props;
+		const { loginRequest, isAuthenticated, error, handleSubmit, pristine, reset, submitting } = this.props;
+		const { from } = this.props.location.state || { from: { pathname: '/mainPage' } };
+		if (isAuthenticated) {
+			return (
+				<Redirect to={from}/>
+			);
+		}
+
 		return (
 			<form onSubmit={handleSubmit(loginRequest)}>
 				<Field

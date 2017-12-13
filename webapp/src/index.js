@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Login from './components/Login';
+import Routes from './routes';
 import AppWrapper from './AppWrapper';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
 	<div>
 		<AppWrapper>
-			<Login/>
+			<Routes />
 		</AppWrapper>
 	</div>,
 	document.getElementById('root'));
