@@ -6,7 +6,7 @@ const {
 	loginSuccess
 } = actionCreators;
 
-// ApiClient.instance.authentications['resca'].accessToken = "sssss.sssssdffff.ffgggg";
+// ApiClient.instance.authentications['oauth'].accessToken = "sssss.sssssdffff.ffgggg";
 const pingPongApi = new PingPongApi();
 
 function pingServer() {

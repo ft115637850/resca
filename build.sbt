@@ -17,6 +17,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-cluster-tools" % akkaVersion,
   "com.typesafe.akka" %% "akka-persistence" % akkaVersion,
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
+  "io.jsonwebtoken" % "jjwt" % "0.7.0",
+  "javax.xml.bind" % "jaxb-api" % "2.1",
   "ch.megard" %% "akka-http-cors" % "0.1.11",
   "org.iq80.leveldb" % "leveldb" % "0.7",
   "org.fusesource.leveldbjni" % "leveldbjni-all" % "1.8",

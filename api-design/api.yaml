@@ -11,7 +11,10 @@ produces:
 security:
   - resca: []
 securityDefinitions:
-  resca:
+  basic:
+    type: basic
+    flow: password
+  oauth:
     type: oauth2
     flow: password
 paths:

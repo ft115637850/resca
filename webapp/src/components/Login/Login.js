@@ -46,6 +46,8 @@ class Login extends React.Component {
 					<button type="button" disabled={pristine || submitting} onClick={reset}>
 						{Strings.login.clear}
 					</button>
+					<label>{this.props.pingResult}</label>
+					<FlatButton label={Strings.login.ping} primary={true} onClick={() => this.props.pingServer()} />
 				</div>
 			</form>
 		);

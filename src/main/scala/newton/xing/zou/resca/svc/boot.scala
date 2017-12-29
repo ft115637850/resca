@@ -1,10 +1,8 @@
 package newton.xing.zou.resca.svc
-import com.typesafe.config.{Config, ConfigFactory}
 import akka.stream.ActorMaterializer
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.{RejectionHandler, ExceptionHandler}
-import akka.http.scaladsl.server._
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.model.HttpMethods._
 import akka.http.scaladsl.model.headers.{HttpOrigin, HttpOriginRange}
@@ -15,7 +13,6 @@ import newton.xing.zou.resca.svc.svcv0.{AssetSvc, LoginSvc}
 import scala.collection.immutable
 
 object boot extends App {
-  val mainSys: Config = ConfigFactory.load("application.conf").getConfig("mainSys")
   implicit lazy val system = ActorSystem("resca-akka-http", mainSys)
   /**
     * Ensure that the constructed ActorSystem is shut down when the JVM shuts down
@@ -26,11 +23,11 @@ object boot extends App {
   })
 
   implicit val materializer = ActorMaterializer()
-  val rescaConf: Config = ConfigFactory.load("resca.conf").getConfig("resca")
   val hostName = rescaConf.getString("api.interface")
   val webPort = rescaConf.getInt("api.port")
   val settings = CorsSettings.defaultSettings.copy(
     allowedOrigins = HttpOriginRange(
+      HttpOrigin("http://localhost:7443"),
       HttpOrigin("http://127.0.0.1:7443"),
       HttpOrigin("http://localhost:3000")
     ),

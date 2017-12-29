@@ -12,9 +12,9 @@ const {Login, MainPage} = components;
 const routes = () => (
 	<Router>
 		<Switch>
-			<Route path="/resca/login" component={Login}/>
-			<PrivateRoute path="/resca/mainPage" component={MainPage}/>
-			<Redirect to="/resca/mainPage"/>
+			<Route path="/login" component={Login}/>
+			<PrivateRoute path="/mainPage" component={MainPage}/>
+			<Redirect to="/mainPage"/>
 		</Switch>
 	</Router>
 );
