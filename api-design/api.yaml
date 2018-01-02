@@ -9,7 +9,8 @@ basePath: /api/v0
 produces:
   - application/json
 security:
-  - resca: []
+  - basic: []
+  - oauth: []
 securityDefinitions:
   basic:
     type: basic
@@ -29,10 +30,26 @@ paths:
           description: returns pong
           schema:
               $ref: '#/definitions/PingPong'
+  /login:
+    get:
+      summary: login server
+      operationId: login
+      tags:
+        - login
+      responses:
+        200:
+          description: returns token
+          schema:
+              $ref: '#/definitions/LoginResult'
 definitions:
   PingPong:
     type: object
     properties:
       result:
+        type: string
+  LoginResult:
+    type: object
+    properties:
+      token:
         type: string
 

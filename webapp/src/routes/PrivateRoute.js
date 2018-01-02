@@ -10,6 +10,7 @@ const { selectors } = loginModule;
 
 const mapStateToProps = state => {
 	return {
+		// TO DO: validate token
 		isAuthenticated: selectors.isAuthenticated(state)
 	};
 };

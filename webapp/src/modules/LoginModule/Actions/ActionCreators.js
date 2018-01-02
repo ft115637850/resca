@@ -1,28 +1,28 @@
 import types from '../ActionTypes';
 
-function pingSuccess(pingResult) {
+function pingSuccess(result) {
 	return {
 		type: types.PING_SUCCESS,
 		payload: {
-			pong: pingResult.result
+			pong: result
 		}
 	};
 }
 
-function pingFailure(pingResult) {
+function pingFailure(result) {
 	return {
 		type: types.PING_FAILURE,
 		payload: {
-			pong: pingResult.result
+			pong: result
 		}
 	};
 }
 
-function loginSuccess(result) {
+function loginSuccess(token) {
 	return {
 		type: types.LOGIN_SUCCESS,
 		payload: {
-			token: result.token
+			token: token
 		}
 	};
 }

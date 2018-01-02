@@ -42,7 +42,8 @@ export default class ApiClient {
          * @type {Array.<String>}
          */
         this.authentications = {
-            'resca': {type: 'oauth2'}
+            'basic': {type: 'basic'},
+            'oauth': {type: 'oauth2'}
         }
 
         /**
