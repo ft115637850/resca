@@ -5,14 +5,14 @@ import akka.http.scaladsl.server.Directives
 import akka.http.scaladsl.server.directives.Credentials
 
 class LoginSvc extends Directives {
-  val myUserPassAuthenticator: AuthenticatorPF[String] = {
+  val userPwdAuthenticator: AuthenticatorPF[String] = {
     case p @ Credentials.Provided(id) if p.verify("p4ssw0rd")         => id
     case p @ Credentials.Provided(id) if p.verify("p4ssw0rd-special") => s"$id-admin"
   }
 
   val route = get {
     path("api" / "v0" / "login" ~ Slash.?) {
-      authenticateBasicPF(realm = "secure site", myUserPassAuthenticator) { userName => {
+      authenticateBasicPF(realm = "secure site", userPwdAuthenticator) { userName => {
           val payload = Map[String, Any](
             "userName" -> userName
           )

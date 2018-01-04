@@ -41,6 +41,17 @@ paths:
           description: returns token
           schema:
               $ref: '#/definitions/LoginResult'
+  /getContent:
+    get:
+      summary: get content
+      operationId: getContent
+      tags:
+        - getContent
+      responses:
+        200:
+          description: returns content
+          schema:
+              $ref: '#/definitions/Content'
 definitions:
   PingPong:
     type: object
@@ -52,4 +63,9 @@ definitions:
     properties:
       token:
         type: string
+  Content:
+      type: object
+      properties:
+        userName:
+          type: string
 
