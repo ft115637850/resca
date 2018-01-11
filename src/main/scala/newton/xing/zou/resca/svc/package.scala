@@ -10,7 +10,7 @@ package object svc {
   val mainSys: Config = ConfigFactory.load("application.conf").getConfig("mainSys")
   val rescaConf: Config = ConfigFactory.load("resca.conf").getConfig("resca")
   val jwtSecret = rescaConf.getString("jwt.secret")
-  val expireMs = 15 * 60 * 1000L
+  val expireMs = 15 * 60 * 1000L  // 15 min
 
   def encodeJwt(payload: Map[String, Any], expireMs: Long = expireMs): String = {
     try {

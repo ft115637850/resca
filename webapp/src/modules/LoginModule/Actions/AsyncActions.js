@@ -31,7 +31,6 @@ function loginRequest(values) {
 				expiresDate.setTime(expiresDate.getTime() + (15 * 60 * 1000));
 				cookies.set('token', res.token, { path: '/', expires: expiresDate });
 				dispatch(loginSuccess(res.token));
-				console.log(cookies.get('token'));
 			})
 			.catch(res => console.log(res));
 	};

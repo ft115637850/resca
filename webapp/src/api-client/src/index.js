@@ -13,8 +13,11 @@
 
 
 import ApiClient from './ApiClient';
+import Content from './model/Content';
+import Friend from './model/Friend';
 import LoginResult from './model/LoginResult';
 import PingPong from './model/PingPong';
+import GetContentApi from './api/GetContentApi';
 import LoginApi from './api/LoginApi';
 import PingPongApi from './api/PingPongApi';
 
@@ -58,6 +61,18 @@ export {
     ApiClient,
 
     /**
+     * The Content model constructor.
+     * @property {module:model/Content}
+     */
+    Content,
+
+    /**
+     * The Friend model constructor.
+     * @property {module:model/Friend}
+     */
+    Friend,
+
+    /**
      * The LoginResult model constructor.
      * @property {module:model/LoginResult}
      */
@@ -68,6 +83,12 @@ export {
      * @property {module:model/PingPong}
      */
     PingPong,
+
+    /**
+    * The GetContentApi service constructor.
+    * @property {module:api/GetContentApi}
+    */
+    GetContentApi,
 
     /**
     * The LoginApi service constructor.

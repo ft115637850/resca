@@ -5,13 +5,13 @@ import {
 	Redirect,
 	withRouter
 } from 'react-router-dom';
-import loginModule from '../modules/LoginModule';
-const { selectors } = loginModule;
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
-const mapStateToProps = state => {
+const mapStateToProps = () => {
 	return {
 		// TO DO: validate token
-		isAuthenticated: selectors.isAuthenticated(state)
+		isAuthenticated: cookies.get('token') !== undefined
 	};
 };
 

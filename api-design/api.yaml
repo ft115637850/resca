@@ -64,8 +64,20 @@ definitions:
       token:
         type: string
   Content:
-      type: object
-      properties:
-        userName:
-          type: string
-
+    type: object
+    properties:
+      friends:
+        type: array
+        items:
+          $ref: '#/definitions/Friend'
+  Friend:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      gender:
+        type: string
+      status:
+        type: string

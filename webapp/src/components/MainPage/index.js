@@ -1,9 +1,20 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import MainPage from './MainPage';
+import MainPageModule from '../../modules/MainPageModule';
+const { selectors, actions } = MainPageModule;
 
-const MainPage = () => {
-	return (
-		<div>Welcome</div>
-	);
+const mapStateToProps = state => {
+	return {
+		friends: selectors.allFriends(state),
+		idleFriends: selectors.idleFriends(state),
+		busyFriends: selectors.busyFriends(state)
+	};
 };
 
-export default MainPage;
+const mapDispatchToProps = dispatch => {
+	return {
+		getContent: () => dispatch(actions.getContent())
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

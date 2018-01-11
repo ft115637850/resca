@@ -11,7 +11,7 @@ object JWT {
 
 class ContentSvc extends Directives {
   val tokenAuthenticator: AuthenticatorPF[Map[String, Any]] = {
-    case p @ Credentials.Provided(JWT(usr)) if usr.contains("userName") => usr
+    case Credentials.Provided(JWT(usr)) if usr.contains("userName") => usr
   }
 
   val route = authenticateOAuth2PF(realm = "secure site", tokenAuthenticator) {
@@ -21,7 +21,34 @@ class ContentSvc extends Directives {
   def getContent(usr :Map[String, Any]) =
     path("api" / "v0" / "getContent" ~ Slash.?) {
       get {
-        val result = s"""{"token" : "$usr"}""".stripMargin
+        val result = """{
+                       |  "friends": [
+                       |    {
+                       |      "id": "Tim",
+                       |      "name": "Tim",
+                       |      "gender": "male",
+                       |      "status": "busy"
+                       |    },
+                       |    {
+                       |      "id": "Alex",
+                       |      "name": "Alex",
+                       |      "gender": "male",
+                       |      "status": "idle"
+                       |    },
+                       |    {
+                       |      "id": "Carl",
+                       |      "name": "Carl",
+                       |      "gender": "male",
+                       |      "status": "busy"
+                       |    },
+                       |    {
+                       |      "id": "Steven",
+                       |      "name": "Steven",
+                       |      "gender": "male",
+                       |      "status": "idle"
+                       |    }
+                       |  ]
+                       |}""".stripMargin
         complete(HttpResponse(
           200,
           entity = HttpEntity(ContentType(MediaTypes.`application/json`), result)

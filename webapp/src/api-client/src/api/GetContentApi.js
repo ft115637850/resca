@@ -13,18 +13,18 @@
 
 
 import ApiClient from "../ApiClient";
-import PingPong from '../model/PingPong';
+import Content from '../model/Content';
 
 /**
-* PingPong service.
-* @module api/PingPongApi
+* GetContent service.
+* @module api/GetContentApi
 * @version 1.0.0
 */
-export default class PingPongApi {
+export default class GetContentApi {
 
     /**
-    * Constructs a new PingPongApi. 
-    * @alias module:api/PingPongApi
+    * Constructs a new GetContentApi. 
+    * @alias module:api/GetContentApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instance} if unspecified.
@@ -36,10 +36,10 @@ export default class PingPongApi {
 
 
     /**
-     * ping api server
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PingPong} and HTTP response
+     * get content
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Content} and HTTP response
      */
-    pingPongWithHttpInfo() {
+    getContentWithHttpInfo() {
       let postBody = null;
 
 
@@ -55,21 +55,21 @@ export default class PingPongApi {
       let authNames = ['basic', 'oauth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = PingPong;
+      let returnType = Content;
 
       return this.apiClient.callApi(
-        '/ping', 'GET',
+        '/getContent', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * ping api server
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PingPong}
+     * get content
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Content}
      */
-    pingPong() {
-      return this.pingPongWithHttpInfo()
+    getContent() {
+      return this.getContentWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });

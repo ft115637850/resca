@@ -1,7 +1,9 @@
 import LoginModule from './LoginModule';
+import MainPageModule from './MainPageModule';
 
 const modules = [
-	LoginModule
+	LoginModule,
+	MainPageModule
 ];
 
 export default modules;

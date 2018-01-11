@@ -13,20 +13,21 @@
 
 
 import ApiClient from '../ApiClient';
+import Friend from './Friend';
 
 
 
 
 
 /**
-* The LoginResult model module.
-* @module model/LoginResult
+* The Content model module.
+* @module model/Content
 * @version 1.0.0
 */
-export default class LoginResult {
+export default class Content {
     /**
-    * Constructs a new <code>LoginResult</code>.
-    * @alias module:model/LoginResult
+    * Constructs a new <code>Content</code>.
+    * @alias module:model/Content
     * @class
     */
 
@@ -42,31 +43,31 @@ export default class LoginResult {
     }
 
     /**
-    * Constructs a <code>LoginResult</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>Content</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:model/LoginResult} obj Optional instance to populate.
-    * @return {module:model/LoginResult} The populated <code>LoginResult</code> instance.
+    * @param {module:model/Content} obj Optional instance to populate.
+    * @return {module:model/Content} The populated <code>Content</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new LoginResult();
+            obj = obj || new Content();
 
             
             
             
 
-            if (data.hasOwnProperty('token')) {
-                obj['token'] = ApiClient.convertToType(data['token'], 'String');
+            if (data.hasOwnProperty('friends')) {
+                obj['friends'] = ApiClient.convertToType(data['friends'], [Friend]);
             }
         }
         return obj;
     }
 
     /**
-    * @member {String} token
+    * @member {Array.<module:model/Friend>} friends
     */
-    token = undefined;
+    friends = undefined;
 
 
 
