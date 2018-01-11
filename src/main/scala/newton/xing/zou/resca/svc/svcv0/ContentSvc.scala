@@ -27,25 +27,29 @@ class ContentSvc extends Directives {
                        |      "id": "Tim",
                        |      "name": "Tim",
                        |      "gender": "male",
-                       |      "status": "busy"
+                       |      "status": "busy",
+                       |      "avatar": "ok-128.jpg"
                        |    },
                        |    {
                        |      "id": "Alex",
                        |      "name": "Alex",
                        |      "gender": "male",
-                       |      "status": "idle"
+                       |      "status": "idle",
+                       |      "avatar": "chexee-128.jpg"
                        |    },
                        |    {
                        |      "id": "Carl",
                        |      "name": "Carl",
                        |      "gender": "male",
-                       |      "status": "busy"
+                       |      "status": "busy",
+                       |      "avatar": "kerem-128.jpg"
                        |    },
                        |    {
                        |      "id": "Steven",
                        |      "name": "Steven",
                        |      "gender": "male",
-                       |      "status": "idle"
+                       |      "status": "idle",
+                       |      "avatar": "kolage-128.jpg"
                        |    }
                        |  ]
                        |}""".stripMargin

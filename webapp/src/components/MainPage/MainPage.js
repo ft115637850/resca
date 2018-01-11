@@ -22,7 +22,7 @@ const MainPage = props => {
 									<ListItem
 										key={index}
 										primaryText={friend.name}
-										leftAvatar={<Avatar src="images/ok-128.jpg" />}
+										leftAvatar={<Avatar src={`images/${friend.avatar}`} />}
 										rightIcon={<CommunicationChatBubble />}
 									/>);
 							})
@@ -37,7 +37,7 @@ const MainPage = props => {
 									<ListItem
 										key={index}
 										primaryText={friend.name}
-										leftAvatar={<Avatar src="images/ok-128.jpg" />}
+										leftAvatar={<Avatar src={`images/${friend.avatar}`} />}
 										rightIcon={<CommunicationChatBubble />}
 									/>);
 							})

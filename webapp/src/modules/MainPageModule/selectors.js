@@ -12,7 +12,8 @@ const allFriends = createSelector(
 			return {
 				id: friends[id].id,
 				name: friends[id].name,
-				status: friends[id].status
+				status: friends[id].status,
+				avatar: friends[id].avatar
 			};
 		});
 	}

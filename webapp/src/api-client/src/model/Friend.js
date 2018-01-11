@@ -68,6 +68,9 @@ export default class Friend {
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
             }
+            if (data.hasOwnProperty('avatar')) {
+                obj['avatar'] = ApiClient.convertToType(data['avatar'], 'String');
+            }
         }
         return obj;
     }
@@ -88,6 +91,10 @@ export default class Friend {
     * @member {String} status
     */
     status = undefined;
+    /**
+    * @member {String} avatar
+    */
+    avatar = undefined;
 
 
 

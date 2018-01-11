@@ -81,3 +81,5 @@ definitions:
         type: string
       status:
         type: string
+      avatar:
+        type: string

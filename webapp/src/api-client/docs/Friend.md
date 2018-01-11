@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **gender** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
+**avatar** | **String** |  | [optional] 
 
 
