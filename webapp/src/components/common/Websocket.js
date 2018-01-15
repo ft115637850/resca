@@ -10,8 +10,8 @@ class Websocket extends React.Component {
 		};
 		this.sendMessage = this.sendMessage.bind(this);
 		this.setupWebsocket = this.setupWebsocket.bind(this);
-		this.logging = this.setupWebsocket.bind(this);
-		this.generateInterval = this.setupWebsocket.bind(this);
+		this.logging = this.logging.bind(this);
+		this.generateInterval = this.generateInterval.bind(this);
 	}
 
 	logging(logline) {

@@ -6,6 +6,7 @@ import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bu
 import React from 'react';
 import Websocket from '../common/Websocket';
 import FlatButton from 'material-ui/FlatButton';
+import Cookies from 'universal-cookie';
 import Strings from '../../strings';
 
 class MainPage extends React.Component {
@@ -27,6 +28,8 @@ class MainPage extends React.Component {
 
 	render() {
 		const {friends, idleFriends, busyFriends, getContent} = this.props;
+		const cookies = new Cookies();
+		const token = cookies.get('token');
 		return (
 			<div>
 				<h1>Welcome</h1>
@@ -65,7 +68,7 @@ class MainPage extends React.Component {
 				)}
 				<FlatButton label={Strings.getContent.getContent} primary={true} onClick={() => getContent()}/>
 				<FlatButton label={'test websocket'} onClick={() => this.sendMessage('Hello')} />
-				<Websocket url="ws://echo.websocket.org" onMessage={this.handleData}
+				<Websocket url={`ws://${token}:token@127.0.0.1:7443/api/v0/ws-echo`} onMessage={this.handleData}
 					onOpen={this.handleOpen} onClose={this.handleClose}
 					reconnect={true}
 					ref={Websocket => {

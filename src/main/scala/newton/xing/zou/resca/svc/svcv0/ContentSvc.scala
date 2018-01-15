@@ -1,13 +1,8 @@
 package newton.xing.zou.resca.svc.svcv0
-import newton.xing.zou.resca.svc.{decodeJwt, encodeJwt}
+import newton.xing.zou.resca.svc.JWT
 import akka.http.scaladsl.model.{ContentType, HttpEntity, HttpResponse, MediaTypes}
 import akka.http.scaladsl.server.Directives
 import akka.http.scaladsl.server.directives.Credentials
-
-object JWT {
-  def apply(payload: Map[String, Any]) = encodeJwt(payload)
-  def unapply(token: String): Option[Map[String, Any]] = Some(decodeJwt(token))
-}
 
 class ContentSvc extends Directives {
   val tokenAuthenticator: AuthenticatorPF[Map[String, Any]] = {

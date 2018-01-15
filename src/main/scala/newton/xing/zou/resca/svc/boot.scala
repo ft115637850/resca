@@ -9,7 +9,7 @@ import akka.http.scaladsl.model.headers.{HttpOrigin, HttpOriginRange}
 import akka.http.scaladsl.server.Directives._
 import ch.megard.akka.http.cors.CorsDirectives._
 import ch.megard.akka.http.cors.CorsSettings
-import newton.xing.zou.resca.svc.svcv0.{AssetSvc, LoginSvc, ContentSvc}
+import newton.xing.zou.resca.svc.svcv0.{WebsocketSvc, AssetSvc, LoginSvc, ContentSvc}
 import scala.collection.immutable
 
 object boot extends App {
@@ -44,7 +44,7 @@ object boot extends App {
   val route = handleRejections(corsRejectionHandler) {
     cors(settings)(
       handleErrors {
-        new AssetSvc().route ~ new LoginSvc().route ~ new ContentSvc().route
+        new WebsocketSvc().route ~ new AssetSvc().route ~ new LoginSvc().route ~ new ContentSvc().route
       }
     )
   }
