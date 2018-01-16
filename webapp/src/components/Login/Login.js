@@ -1,18 +1,33 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import {Redirect} from 'react-router-dom';
-import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import IconPerson from 'material-ui/svg-icons/maps/person-pin';
+import IconKey from 'material-ui/svg-icons/communication/vpn-key';
+import IconButton from 'material-ui/IconButton';
 import Strings from '../../strings';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
 	<div>
-		<label>{label}</label>
-		<div>
-			<input {...input} placeholder={label} type={type} />
-			{touched && error && <span>{error}</span>}
-		</div>
+		<TextField
+			{...input}
+			type={type}
+			floatingLabelText={label}
+		/>
+		{touched && error && <span>{error}</span>}
 	</div>
 );
+
+const style = {
+	width: 350,
+	minHeight: 400,
+	margin: 'auto',
+	marginTop: 50,
+	padding: '15px 15px 70px 15px',
+	position: 'relative'
+};
 
 class Login extends React.Component {
 	render() {
@@ -25,31 +40,37 @@ class Login extends React.Component {
 		}
 
 		return (
-			<form onSubmit={handleSubmit(loginRequest)}>
-				<Field
-					name="username"
-					type="text"
-					component={renderField}
-					label="Username"
-				/>
-				<Field
-					name="password"
-					type="password"
-					component={renderField}
-					label="Password"
-				/>
-				{error && <strong>{error}</strong>}
-				<div>
-					<button type="submit" disabled={submitting}>
-						{Strings.login.login}
-					</button>
-					<button type="button" disabled={pristine || submitting} onClick={reset}>
-						{Strings.login.clear}
-					</button>
-					<label>{this.props.pingResult}</label>
-					<FlatButton label={Strings.login.ping} primary={true} onClick={() => this.props.pingServer()} />
-				</div>
-			</form>
+			<Paper style={style} zDepth={2}>
+				<form>
+					<h2 style={{textAlign: 'center'}}>User login</h2>
+					<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+						<IconButton><IconPerson/></IconButton>
+						<Field
+							name="username"
+							type="text"
+							component={renderField}
+							label="Username"
+						/>
+					</div>
+					<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+						<IconButton><IconKey/></IconButton>
+						<Field
+							name="password"
+							type="password"
+							component={renderField}
+							label="Password"
+						/>
+					</div>
+					<div style={{display: 'flex', flexDirection: 'row'}}>
+						<div style={{paddingLeft: 50, flex: '1'}}>
+							<RaisedButton label={Strings.login.login} primary={true} onClick={handleSubmit(loginRequest)} />
+						</div>
+						<div style={{width: 'auto', paddingRight: 20}}>
+							<RaisedButton label={Strings.login.clear} primary={true} onClick={reset} />
+						</div>
+					</div>
+				</form>
+			</Paper>
 		);
 	}
 }
