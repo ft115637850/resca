@@ -11,8 +11,23 @@ import ch.megard.akka.http.cors.CorsDirectives._
 import ch.megard.akka.http.cors.CorsSettings
 import newton.xing.zou.resca.svc.svcv0.{WebsocketSvc, AssetSvc, LoginSvc, ContentSvc}
 import scala.collection.immutable
+import org.apache.commons.cli.{DefaultParser, HelpFormatter, Options, Option => CliOption}
 
 object boot extends App {
+  val options = new Options()
+  options.addOption(
+    CliOption
+      .builder("port")
+      .longOpt("port")
+      .desc("web service port")
+      .hasArg()
+      .required()
+      .argName("WEB-PORT")
+      .build()
+  )
+  val parser = new DefaultParser()
+  val cmd = parser.parse(options, args)
+  var webPort = cmd.getOptionValue("port").toInt
   implicit lazy val system = ActorSystem("resca-akka-http", mainSys)
   /**
     * Ensure that the constructed ActorSystem is shut down when the JVM shuts down
@@ -24,7 +39,9 @@ object boot extends App {
 
   implicit val materializer = ActorMaterializer()
   val hostName = rescaConf.getString("api.interface")
-  val webPort = rescaConf.getInt("api.port")
+  if (webPort < 0) {
+    webPort = rescaConf.getInt("api.port")
+  }
   val settings = CorsSettings.defaultSettings.copy(
     allowedOrigins = HttpOriginRange(
       HttpOrigin("http://localhost:7443"),
