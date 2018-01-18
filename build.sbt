@@ -32,3 +32,5 @@ libraryDependencies ++= Seq(
   "org.json4s" %% "json4s-jackson" % json4s_ver,
   "org.json4s" %% "json4s-ext" % json4s_ver,
   "commons-io" % "commons-io" % "2.4" % "test")
+
+enablePlugins(JavaServerAppPackaging, DebianPlugin, UpstartPlugin)
