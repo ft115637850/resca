@@ -45,7 +45,7 @@ object boot extends App {
   val settings = CorsSettings.defaultSettings.copy(
     allowedOrigins = HttpOriginRange(
       HttpOrigin("http://localhost:7443"),
-      HttpOrigin("http://127.0.0.1:7443"),
+      HttpOrigin("https://resca-portal.herokuapp.com"),
       HttpOrigin("http://localhost:3000")
     ),
     allowedMethods = immutable.Seq(GET, POST, HEAD, OPTIONS, PUT)
