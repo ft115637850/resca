@@ -1,5 +1,10 @@
 # Resca
 [![Build Status](https://travis-ci.org/ft115637850/resca.svg?branch=master)](https://travis-ci.org/ft115637850/resca)
+Resca is a boilerplate for Reactjs + Akka.
+It also shows best practices of
+* How to validate JWT in akka-http.
+* How to integrate redux, react-router into react.
+* How to implement websocket in react.
 
 ## Demo
 * https://resca-portal.herokuapp.com/
