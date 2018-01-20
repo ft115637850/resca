@@ -34,4 +34,5 @@ $ npm start
 
 #### Open browser and access web port 3000
 > http://localhost:3000
-> account: www/p4ssw0rd
+
+> www/p4ssw0rd
