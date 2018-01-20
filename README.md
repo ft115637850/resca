@@ -20,12 +20,12 @@ cd resca
 ```
 ---
 
-#### Start resca frontend server
+#### Start resca back end server
 ```sh
 $ sbt "run-main newton.xing.zou.resca.svc.boot -port 7443"
 ```
 
-#### Start resca backend server
+#### Start resca front end server
 ```sh
 $ cd resca\webapp
 $ npm install
@@ -34,4 +34,4 @@ $ npm start
 
 #### Open browser and access web port 3000
 > http://localhost:3000
-> login www/p4ssw0rd
+> account: www/p4ssw0rd
