@@ -3,3 +3,35 @@
 
 ## Demo
 * https://resca-portal.herokuapp.com/
+
+## How to run
+#### Prerequisites
+
+* JDK 8+
+* Scala 2.12+
+* SBT 1.0+
+* Nodejs 6+
+
+#### Clone source code
+```sh
+git clone https://github.com/ft115637850/resca.git
+
+cd resca
+```
+---
+
+#### Start resca frontend server
+```sh
+$ sbt "run-main newton.xing.zou.resca.svc.boot -port 7443"
+```
+
+#### Start resca backend server
+```sh
+$ cd resca\webapp
+$ npm install
+$ npm start
+```
+
+#### Open browser and access web port 3000
+> http://localhost:3000
+> login www/p4ssw0rd

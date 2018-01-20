@@ -34,3 +34,4 @@ yarn-error.log*
 /webapp/src/api-client/package.json
 /webapp/src/api-client/.swagger-codegen-ignore
 /api-design/swagger-codegen-cli-2.3.0.jar
+/project/project/target/config-classes

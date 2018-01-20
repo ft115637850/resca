@@ -39,9 +39,6 @@ object boot extends App {
 
   implicit val materializer = ActorMaterializer()
   val hostName = rescaConf.getString("api.interface")
-  if (webPort < 0) {
-    webPort = rescaConf.getInt("api.port")
-  }
   val settings = CorsSettings.defaultSettings.copy(
     allowedOrigins = HttpOriginRange(
       HttpOrigin("http://localhost:7443"),
