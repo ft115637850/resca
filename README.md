@@ -1,9 +1,11 @@
 # Resca
 [![Build Status](https://travis-ci.org/ft115637850/resca.svg?branch=master)](https://travis-ci.org/ft115637850/resca)
+
 Resca is a boilerplate for Reactjs + Akka.
 It also shows best practices of
 * How to validate JWT in akka-http.
 * How to integrate redux, react-router into react.
+* How to utilize swagger-codegen and yaml to integrate with back-end endpoints.
 * How to implement websocket in react.
 
 ## Demo
@@ -25,12 +27,12 @@ cd resca
 ```
 ---
 
-#### Start resca back end server
+#### Start resca back-end server
 ```sh
 $ sbt "run-main newton.xing.zou.resca.svc.boot -port 7443"
 ```
 
-#### Start resca front end server
+#### Start resca front-end server
 ```sh
 $ cd resca\webapp
 $ npm install
