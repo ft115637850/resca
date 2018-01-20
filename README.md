@@ -5,7 +5,7 @@ Resca is a boilerplate for Reactjs + Akka.
 It also shows best practices of
 * How to validate JWT in akka-http.
 * How to integrate redux, react-router into react.
-* How to utilize swagger-codegen and yaml to integrate with back-end endpoints.
+* How to utilize swagger-codegen and yaml to generate api-client.
 * How to implement websocket in react.
 
 ## Demo
