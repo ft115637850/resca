@@ -9,19 +9,19 @@ import IconKey from 'material-ui/svg-icons/communication/vpn-key';
 import IconButton from 'material-ui/IconButton';
 import Strings from '../../strings';
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
-	<div>
+const RenderField = ({ input, label, type, meta: { touched, error } }) => (
+	<div style={{flex: 1, paddingRight: '20px'}}>
 		<TextField
 			{...input}
 			type={type}
 			floatingLabelText={label}
+			fullWidth={true}
 		/>
 		{touched && error && <span>{error}</span>}
 	</div>
 );
 
 const style = {
-	width: 350,
 	minHeight: 400,
 	margin: 'auto',
 	marginTop: 50,
@@ -48,7 +48,7 @@ class Login extends React.Component {
 						<Field
 							name="username"
 							type="text"
-							component={renderField}
+							component={RenderField}
 							label="Username"
 						/>
 					</div>
@@ -57,7 +57,7 @@ class Login extends React.Component {
 						<Field
 							name="password"
 							type="password"
-							component={renderField}
+							component={RenderField}
 							label="Password"
 						/>
 					</div>
