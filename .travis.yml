@@ -3,6 +3,8 @@ matrix:
     - language: scala
       scala:
         - 2.12.1
+      script:
+        - sbt compile
     - language: node_js
       node_js:
         - "6.1"
