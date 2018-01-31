@@ -10,4 +10,4 @@ matrix:
         - cd webapp
       script:
         - npm install
-        - npm start
+        - npm build
