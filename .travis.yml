@@ -8,3 +8,6 @@ matrix:
         - "6.1"
       before_script:
         - cd webapp
+      script:
+        - npm install
+        - npm start
